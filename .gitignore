@@ -1,4 +1,3 @@
 .ipynb_checkpoints
-*.wav
 *.mp3
 **/models

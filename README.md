@@ -1,7 +1,7 @@
 
 # Project 15 - Elephant Listening Project
 
-## Links
+## Relevant Links
 - https://elephantlisteningproject.org/
 - https://microsoft.github.io/project15/
 
