@@ -3,9 +3,13 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
+import os
 
 # path to json file that stores MFCCs and genre labels for each processed segment
-DATA_PATH = "./dataset.json"
+dirname, filename = os.path.split(os.path.abspath(__file__))
+DATA_PATH = os.path.join(dirname, "dataset.json")
+MODEL_PATH = os.path.join(dirname, 'models/gunshot-detection/1/model.savedmodel')
+
 
 def load_data(data_path):
     """Loads training dataset from json file.
@@ -50,7 +54,51 @@ def plot_history(history):
     axs[1].legend(loc="upper right")
     axs[1].set_title("Error eval")
 
-    plt.show()
+    # show plot
+    # plt.show()
+
+
+def build_model(input_shape):
+    """Generates MLP model
+
+    :param input_shape (tuple): Shape of input set
+    :return model: MLP model
+    """
+
+    # build network topology
+    model = keras.Sequential([
+
+        # input layer
+        keras.layers.Flatten(input_shape=input_shape),
+
+        # 1st dense layer
+        keras.layers.Dense(512, activation='relu',
+                           kernel_regularizer=keras.regularizers.l2(0.001)),
+        keras.layers.Dropout(0.3),
+
+        # 2nd dense layer
+        keras.layers.Dense(256, activation='relu',
+                           kernel_regularizer=keras.regularizers.l2(0.001)),
+        keras.layers.Dropout(0.3),
+
+        # 3rd dense layer
+        keras.layers.Dense(64, activation='relu',
+                           kernel_regularizer=keras.regularizers.l2(0.001)),
+        keras.layers.Dropout(0.3),
+
+        # output layer
+        keras.layers.Dense(1, activation='sigmoid')
+    ])
+
+    # compile model
+    optimiser = keras.optimizers.Adam(learning_rate=0.0001)
+    model.compile(optimizer=optimiser,
+                  loss='binary_crossentropy',
+                  metrics=['accuracy'])
+
+    model.summary()
+
+    return model
 
 
 if __name__ == "__main__":
@@ -61,44 +109,18 @@ if __name__ == "__main__":
     # create train/test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
-    # build network topology
-    model = keras.Sequential([
-
-        # input layer
-        keras.layers.Flatten(input_shape=(X.shape[1], X.shape[2])),
-
-        # 1st dense layer
-        keras.layers.Dense(512, activation='relu', kernel_regularizer=keras.regularizers.l2(0.001)),
-        keras.layers.Dropout(0.3),
-
-        # 2nd dense layer
-        keras.layers.Dense(256, activation='relu', kernel_regularizer=keras.regularizers.l2(0.001)),
-        keras.layers.Dropout(0.3),
-
-        # 3rd dense layer
-        keras.layers.Dense(64, activation='relu', kernel_regularizer=keras.regularizers.l2(0.001)),
-        keras.layers.Dropout(0.3),
-
-        # output layer
-        keras.layers.Dense(2, activation='softmax')
-    ])
-
-    # compile model
-    optimiser = keras.optimizers.Adam(learning_rate=0.0001)
-    model.compile(optimizer=optimiser,
-                  loss='sparse_categorical_crossentropy',
-                  metrics=['accuracy'])
-
-    model.summary()
-
+    model = build_model((X.shape[1], X.shape[2]))
     # train model
-    history = model.fit(X_train, y_train, validation_data=(X_test, y_test), batch_size=32, epochs=100)
+    history = model.fit(X_train, y_train, validation_data=(
+        X_test, y_test), batch_size=32, epochs=100)
 
     # plot accuracy and error as a function of the epochs
-    plot_history(history)
+    # plot_history(history)
 
     # evaluate model on test set
     test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
     print('\nTest accuracy:', test_acc)
 
-    model.save('models/gunshot-detection/1/model.savedmodel')
+    # save model
+    model.save(MODEL_PATH)
+    print('\MLP model saved to :', MODEL_PATH)

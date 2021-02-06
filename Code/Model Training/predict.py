@@ -2,10 +2,12 @@ import json
 import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow.keras as keras
-
+import os
 # path to json file that stores MFCCs and genre labels for each processed segment
-DATA_PATH = "./dataset.json"
 
+dirname, filename = os.path.split(os.path.abspath(__file__))
+DATA_PATH = os.path.join(dirname, "dataset.json")
+MODEL_PATH = os.path.join(dirname, 'models/gunshot-detection/1/model.savedmodel')
 
 def load_data(data_path):
     """Loads training dataset from json file.
@@ -34,15 +36,15 @@ def predict(model, X, y):
     """
 
     # add a dimension to input data for sample - model.predict() expects a 4d array in this case
-    X = X[np.newaxis, ...]  # array shape (1, 130, 13, 1)
+    X = X[np.newaxis, ...]  # array shape (1, 10, 13, 1)
     
     # perform prediction
     prediction = model.predict(X)
     
     # get index with max value
-    predicted_index = np.argmax(prediction, axis=1)
+    predicted_index = np.argmax(prediction, axis=1)[0]
 
-    print("Target: {}, Predicted label: {}".format(y, predicted_index))
+    print("Target Label: {}, Predicted label: {}".format(y, predicted_index))
 
 
 if __name__ == "__main__":
@@ -51,9 +53,13 @@ if __name__ == "__main__":
     X, y = load_data(DATA_PATH)
 
     # create train/test split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8)
 
-    model = keras.models.load_model('models/gunshot-detection/1/model.savedmodel')
+    # add an axis to input sets for CNN
+    # X_train = X_train[..., np.newaxis]
+    # X_test = X_test[..., np.newaxis]
+
+    model = keras.models.load_model(MODEL_PATH)
 
     # Check its architecture
     model.summary()

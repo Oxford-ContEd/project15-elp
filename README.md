@@ -16,3 +16,7 @@
 - Kennedy. Mumba
 - Ashwin Mylavarapu
 - Menelaos Malaxianakis
+
+## Other Links
+
+- https://developers.google.com/machine-learning/guides/text-classification/step-4
