@@ -3,8 +3,12 @@ import os
 import math
 import librosa
 
-DATASET_PATH = "../Dataset"
-JSON_PATH = "dataset.json"
+
+dirname, filename = os.path.split(os.path.abspath(__file__))
+TRAIN_DATASET_PATH = os.path.join(dirname, "../Train_dataset")
+TRAIN_JSON_PATH = os.path.join(dirname,  "train_dataset.json")
+TEST_DATASET_PATH = os.path.join(dirname, "../Test_dataset")
+TEST_JSON_PATH = os.path.join(dirname,  "test_dataset.json")
 SAMPLE_RATE = 44100
 
 
@@ -73,4 +77,5 @@ def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, 
         
         
 if __name__ == "__main__":
-    save_mfcc(DATASET_PATH, JSON_PATH, segment_size_factor=10)
+    save_mfcc(TRAIN_DATASET_PATH, TRAIN_JSON_PATH, segment_size_factor=10)
+    save_mfcc(TEST_DATASET_PATH, TEST_JSON_PATH, segment_size_factor=10)

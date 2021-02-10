@@ -7,7 +7,7 @@ import os
 
 # path to json file that stores MFCCs and genre labels for each processed segment
 dirname, filename = os.path.split(os.path.abspath(__file__))
-DATA_PATH = os.path.join(dirname, "dataset.json")
+DATA_PATH = os.path.join(dirname, "train_dataset.json")
 MODEL_PATH = os.path.join(dirname, 'models/gunshot-detection/1/model.savedmodel')
 
 

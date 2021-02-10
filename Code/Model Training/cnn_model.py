@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import os
 
 dirname, filename = os.path.split(os.path.abspath(__file__))
-DATA_PATH = os.path.join(dirname, "dataset.json")
+DATA_PATH = os.path.join(dirname, "train_dataset.json")
 MODEL_PATH = os.path.join(dirname, 'models/gunshot-detection/2/model.savedmodel')
 
 def load_data(data_path):
