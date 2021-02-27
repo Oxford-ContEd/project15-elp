@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@tensorflow/tfjs-node": "^3.2.0",
     "azure-iot-device": "^1.17.3",
-    "azure-iot-device-mqtt": "^1.15.3"
+    "azure-iot-device-mqtt": "^1.15.3",
+    "dotenv": "^8.2.0"
   }
 }

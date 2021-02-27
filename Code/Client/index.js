@@ -1,6 +1,9 @@
 const Client = require("azure-iot-device").Client;
 const Protocol = require("azure-iot-device-mqtt").Mqtt;
-const predictFunction = require("./predict")
+
+const dotenv = require('dotenv');
+dotenv.config();
+const predictFunction = require("./predict");
 
 function onStart(request, response) {
   console.log("Try to invoke method start(" + request.payload + ")");
@@ -40,9 +43,8 @@ function receiveMessageCallback(msg) {
 }
 
 // create a client
-
-const connectionString =
-  "HostName=P15-IoTHub-pyo6s.azure-devices.net;DeviceId=gunshot-detector-1;SharedAccessKey=3j2JdZDD6ROkDCT4dUo/cir3Kd4/xjW2881TtDrDjaI=";
+const connectionString=process.env.CONN_STR;
+const detectorID=process.env.DETECTOR_ID;
 
 var client = Client.fromConnectionString(connectionString, Protocol);
 var sendingMessage = true;
@@ -64,12 +66,13 @@ var messageId = 0;
 
 async function getMessage(cb) {
   messageId++;
-  gunshot_data = await predictFunction(Math.random());
+  key = Math.random()
+  gunshot_data = await predictFunction(key/2);
   
   cb(
     JSON.stringify({
       messageId: messageId,
-      deviceId: "Gunshot-detector-1",
+      deviceId: detectorID,
       ...gunshot_data
     }),
     gunshot_data.gunshot_probability > 0.5
