@@ -1,3 +1,5 @@
 .ipynb_checkpoints
 *.mp3
 **/models
+
+node_modules

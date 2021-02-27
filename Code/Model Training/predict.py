@@ -7,7 +7,7 @@ import os
 
 dirname, filename = os.path.split(os.path.abspath(__file__))
 DATA_PATH = os.path.join(dirname, "test_dataset.json")
-MODEL_PATH = os.path.join(dirname, 'models/gunshot-detection/1/model.savedmodel')
+MODEL_PATH = os.path.join(dirname, 'models/gunshot-detection/2/model.savedmodel')
 
 def load_data(data_path):
     """Loads training dataset from json file.
@@ -34,15 +34,15 @@ def predict(model, X, y):
     :param X: Input data
     :param y (int): Target
     """
-
     # add a dimension to input data for sample - model.predict() expects a 4d array in this case
     X = X[np.newaxis, ...]  # array shape (1, 10, 13, 1)
-    
+
     # perform prediction
     prediction = model.predict(X)
     
+    print(prediction)
     # get index with max value
-    predicted_index = np.argmax(prediction, axis=1)[0]
+    predicted_index = prediction[0][0]
 
     print("Target Label: {}, Predicted label: {}".format(y, predicted_index))
 

@@ -1,0 +1,16 @@
+{
+  "name": "elp-edge-device",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^3.2.0",
+    "azure-iot-device": "^1.17.3",
+    "azure-iot-device-mqtt": "^1.15.3"
+  }
+}
