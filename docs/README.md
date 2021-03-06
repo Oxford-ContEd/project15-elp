@@ -40,9 +40,9 @@ The models can be deployed using [NVIDIA Triton Inference Server](https://develo
 
 ### Microsoft Project 15 Setup
 
-- Deploy the Project 15 platform as per instructions here https://microsoft.github.io/project15/Deploy/Deployment.html
+- Deploy the Project 15 platform as per instructions [here](https://microsoft.github.io/project15/Deploy/Deployment.html)
 
-- Add a device called `gunshot-detector-1` as per the instructions here https://microsoft.github.io/project15/Deploy/ConnectingDevice.html
+- Add a device called `gunshot-detector-1` as per the instructions [here](https://microsoft.github.io/project15/Deploy/ConnectingDevice.html)
 
 
 ### Edge Device Simulation
@@ -60,9 +60,9 @@ CONN_STR=<conn-string>
 DETECTOR_ID=gunshot-detector-1
 ```
 
-* Run the client to simulate gunshot predictions randomly and send telemetry data to IoT Hub
+* Run the edge device to simulate gunshot predictions randomly and send telemetry data to IoT Hub
 ```sh
-make run_client_simulation
+make run_device_simulation
 ```
 
 ### Live Monitoring and Demo
