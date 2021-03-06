@@ -1,6 +1,5 @@
 # Gunshot Detection in Tropical African Forests 
 
-[GitHub Repo](https://github.com/Oxford-ContEd/project15-elp)
 ## Introduction
 
 This project is a group exercise undertaken as part of the University of Oxford - Artificial Intelligence: Cloud and Edge Implementations course as a learning challenge from Microsoft and Elephant Listening Project. The objective is to devise solutions for gunshot detection in tropical African forests and to create instant alerts to curtail poaching attempts. 
@@ -51,25 +50,25 @@ The models can be deployed using [NVIDIA Triton Inference Server](https://develo
 * We have created a NodeJs based client that sends predictions to IoT Hub using tensorflow as backend. [Link to client](../Code/Deployment/Client)
 
 * Convert the models to tfjs graph format for the client to predict
-```
+```sh
 make convert_model
 ```
 
 * Copy IoT device connection string to `.env` file in the [client folder](../Code/Deployment/Client) as follows
-
 ```
 CONN_STR=<conn-string>
 DETECTOR_ID=gunshot-detector-1
 ```
 
 * Run the client simulation to send telemetry data to IoT Hub
-```
+```sh
 make run_client_simulation
 ```
 
 ### Live Monitoring and Demo
 
-- [Demo Video](https://user-images.githubusercontent.com/24502613/110200565-9d9c9680-7e84-11eb-82a4-1dabf1d7a11c.mp4)
+- Demo Video
+![Demo Video](https://user-images.githubusercontent.com/24502613/110200565-9d9c9680-7e84-11eb-82a4-1dabf1d7a11c.mp4)
 
 - Monitor gunshot detection from the Project 15 app
   ![gunshot_telemetry](../elp_monitor.png)
@@ -83,10 +82,11 @@ Further, many more model architectures can be tested and compared to understand 
 
 ## Relevant Links
 
-- https://elephantlisteningproject.org/
-- https://microsoft.github.io/project15/
+- [Elephant Listening Project](https://elephantlisteningproject.org/)
+- [Project 15](https://microsoft.github.io/project15/)
+- [Update Presentation Slides](./Project_15_ELP_Slides.pptx)
 
-## Research Links
+### Research Links
 
 - https://www.paperswithcode.com/datasets?q=gunshot&v=lst&o=match
 - https://developers.google.com/machine-learning/guides/text-classification/step-4
