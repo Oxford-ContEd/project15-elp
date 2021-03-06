@@ -74,6 +74,12 @@ make run_client_simulation
   ![gunshot_telemetry](../elp_monitor.png)
 
 
+## Future Work
+
+Gunshot detection is still an unsolved problem today and there is ongoing research on this front for both military and other purposes around the world. The machine learning classification model in this context can be improved with **better data collection** from the tropical forests in Africa. The **lack of sufficient data** remains the major issue with this challenge. Accurate gunshot audio should be recorded using the **apposite set of hunting rifles** for improved accuracy and further feature analysis can be conducted comparing gunshots with other surrounding sounds in the elephant habitat. 
+
+Further, many more model architectures can be tested and compared to understand what hyper-parameters work best for such remote environments. This can surely improve the model training process. Also, better deployment practices, telemetry, alert systems, and model upgrade processes can be explored with cloud-based IoT solutions to improve the overall efficiency of the solution.
+
 ## Relevant Links
 
 - https://elephantlisteningproject.org/
