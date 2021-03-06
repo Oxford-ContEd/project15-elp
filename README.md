@@ -27,7 +27,7 @@ This project is a group excercise undertaken as part of the University of Oxford
   ![gunshot_telemetry](elp_monitor.png)
 
 
-* Extended information in [project file](PROJECT.md)
+* Extended information in [project file](docs/index.md)
 
 ## Team
 
