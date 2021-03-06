@@ -67,7 +67,7 @@ make run_client_simulation
 
 ### Live Monitoring and Demo
 
-- [Demo Video](https://user-images.githubusercontent.com/24502613/110200565-9d9c9680-7e84-11eb-82a4-1dabf1d7a11c.mp4)
+- [Demo Video](https://user-images.githubusercontent.com/24502613/110214101-04dc3a00-7ec9-11eb-901c-99a3de0b2352.mp4)
 
 - Monitor gunshot detection from the Project 15 app
   ![gunshot_telemetry](https://user-images.githubusercontent.com/24502613/110213015-369ed200-7ec4-11eb-9788-9f3ac3b99184.png)
