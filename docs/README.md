@@ -29,10 +29,10 @@ Two model architectures tested by running scripts from the [Makefle](../Code/Mod
 
 | Neural Network Architecture  | Train Accuracy | Test Accuracy |
 | ---------------------------- | -------------- | ------------- |
-| Multi-layer Perceptron       | 0.9740         | 0.9205        |
-| Convolutional Neural Network | 0.9756         | 0.9436        |
+| Multi-layer Perceptron       | 0.9756         | 0.9405        |
+| Convolutional Neural Network | 0.9740         | 0.9236        |
 
-_Note_: These accuracy metrics depend directly on the limited data used for model training and testing. Further improvements in contextual data collection, feature extraction and analysis, and experimentation with model architectures is needed to validate the reliability of these model metrics for practical applications. 
+_Note_: These accuracy metrics depend directly on the limited data used for model training and testing. Further improvements in contextual data collection, feature extraction and analysis, and experimentation with model architectures is needed to validate the reliability of these model metrics for practical applications.
 
 ## Deployment
 
@@ -44,23 +44,25 @@ The models can be deployed using [NVIDIA Triton Inference Server](https://develo
 
 - Add a device called `gunshot-detector-1` as per the instructions [here](https://microsoft.github.io/project15/Deploy/ConnectingDevice.html)
 
-
 ### Edge Device Simulation
 
-* We have created an edge device prototype that simulates predictions from audio data and sends telemetry data to IoT Hub. This is a NodeJs based application that uses tensorflow as backend to make predictions using the model created during training phase. 
+- We have created an edge device prototype that simulates predictions from audio data and sends telemetry data to IoT Hub. This is a NodeJs based application that uses tensorflow as backend to make predictions using the model created during training phase.
 
-* The model created during the training phase needs conversion to a tensroflow js graph model format to be used in a node js application. So we convert the models to tfjs graph format for the client to predict using the make command as follows
+- The model created during the training phase needs conversion to a tensroflow js graph model format to be used in a node js application. So we convert the models to tfjs graph format for the client to predict using the make command as follows
+
 ```sh
 make convert_model
 ```
 
-* Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](../Code/Deployment/Client) as follows
+- Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](../Code/Deployment/Client) as follows
+
 ```
 CONN_STR=<conn-string>
 DETECTOR_ID=gunshot-detector-1
 ```
 
-* Run the edge device to simulate gunshot predictions randomly and send telemetry data to IoT Hub
+- Run the edge device to simulate gunshot predictions randomly and send telemetry data to IoT Hub
+
 ```sh
 make run_device_simulation
 ```
@@ -72,10 +74,9 @@ make run_device_simulation
 - Monitor gunshot detection from the Project 15 app
   ![gunshot_telemetry](https://user-images.githubusercontent.com/24502613/110213015-369ed200-7ec4-11eb-9788-9f3ac3b99184.png)
 
-
 ## Future Work
 
-Gunshot detection is still an unsolved problem today and there is ongoing research on this front for both military and other purposes around the world. The machine learning classification model in this context can be improved with **better data collection** from the tropical forests in Africa. The **lack of sufficient data** remains the major issue with this challenge. Accurate gunshot audio should be recorded using the **apposite set of hunting rifles** for improved accuracy and further feature analysis can be conducted comparing gunshots with other surrounding sounds in the elephant habitat. 
+Gunshot detection is still an unsolved problem today and there is ongoing research on this front for both military and other purposes around the world. The machine learning classification model in this context can be improved with **better data collection** from the tropical forests in Africa. The **lack of sufficient data** remains the major issue with this challenge. Accurate gunshot audio should be recorded using the **apposite set of hunting rifles** for improved accuracy and further feature analysis can be conducted comparing gunshots with other surrounding sounds in the elephant habitat.
 
 Further, many more model architectures can be tested and compared to understand what hyper-parameters work best for such remote environments. This can surely improve the model training process. Also, better deployment practices, telemetry, alert systems, and model upgrade processes can be explored with cloud-based IoT solutions to improve the overall efficiency of the solution.
 
