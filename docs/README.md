@@ -9,7 +9,7 @@ The current model is very inefficient - less than .2% of tagged signals are guns
 
 ## Data Collection, Analysis, and Feature extraction
 
-So the main issue in this domain is the lack of tagged data and also the gunshot audio for such use cases is proprietary. So we collected random gunshot samples and other environmental audio samples from internet sources. A few of them are available in the [Sample audio](../Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](../Code/Analysis) folder.
+So the main issue in this domain is the lack of tagged data and also the gunshot audio for such use cases is proprietary. So we collected random gunshot samples and other environmental audio samples from internet sources. A few samples of them are available in the [Sample audio](../Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](../Code/Analysis) folder. For brevity, only a part of the dataset is uploaded in the repo but all examples, notebooks, and the dataset are structured in a way to accommodate more data and scale the model training process as we move ahead.
 
 Many features were analyzed across two different classes namely gunshot and environmental audio. The environmental audio contains audio data of elephant noises and other sounds of the tropical African forests. The features analyzed are as follows,
 
