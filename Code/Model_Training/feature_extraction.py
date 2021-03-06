@@ -5,9 +5,9 @@ import librosa
 
 
 dirname, filename = os.path.split(os.path.abspath(__file__))
-TRAIN_DATASET_PATH = os.path.join(dirname, "../Train_dataset")
+TRAIN_DATASET_PATH = os.path.join(dirname, "../Dataset/Train_dataset")
 TRAIN_JSON_PATH = os.path.join(dirname,  "train_dataset.json")
-TEST_DATASET_PATH = os.path.join(dirname, "../Test_dataset")
+TEST_DATASET_PATH = os.path.join(dirname, "../Dataset/Test_dataset")
 TEST_JSON_PATH = os.path.join(dirname,  "test_dataset.json")
 SAMPLE_RATE = 44100
 

@@ -40,7 +40,6 @@ def predict(model, X, y):
     # perform prediction
     prediction = model.predict(X)
     
-    print(prediction)
     # get index with max value
     predicted_index = prediction[0][0]
 
@@ -56,8 +55,8 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8)
 
     # add an axis to input sets for CNN
-    # X_train = X_train[..., np.newaxis]
-    # X_test = X_test[..., np.newaxis]
+    X_train = X_train[..., np.newaxis]
+    X_test = X_test[..., np.newaxis]
 
     model = keras.models.load_model(MODEL_PATH)
 

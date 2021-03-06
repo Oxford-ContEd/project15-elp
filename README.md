@@ -23,9 +23,11 @@ This project is a group excercise undertaken as part of the University of Oxford
 
 * Run the client simulation to send telemetry data to IoT Hub
 
-- Monitor gunshot detection from the app
+- Monitor gunshot detection from the Project 15 app
   ![gunshot_telemetry](elp_monitor.png)
 
+
+* Extended information in [project file](PROJECT.md)
 
 ## Team
 
