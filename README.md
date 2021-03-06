@@ -5,17 +5,12 @@
 
 This project is a group exercise undertaken as part of the University of Oxford - Artificial Intelligence: Cloud and Edge Implementations course as a learning challenge from Microsoft and Elephant Listening Project. The objective is to devise solutions for gunshot detection in tropical African forests and to create instant alerts to curtail poaching attempts. 
 
-### Advance documentation and demo video can be found [here](docs)
+### Advanced documentation and demo video can be found [here](docs)
 
 ## Relevant Links
 
-- https://elephantlisteningproject.org/
-- https://microsoft.github.io/project15/
-
-## Research Links
-
-- https://www.paperswithcode.com/datasets?q=gunshot&v=lst&o=match
-- https://developers.google.com/machine-learning/guides/text-classification/step-4
+- [Elephant Listening Project](https://elephantlisteningproject.org/)
+- [Project 15](https://microsoft.github.io/project15/)
 
 ## Quick Start
 
@@ -25,13 +20,15 @@ This project is a group exercise undertaken as part of the University of Oxford 
 
 * Run the client simulation to send telemetry data to IoT Hub
 
+- [Demo Video](https://user-images.githubusercontent.com/24502613/110200565-9d9c9680-7e84-11eb-82a4-1dabf1d7a11c.mp4)
+
 - Monitor gunshot detection from the Project 15 app
   ![gunshot_telemetry](elp_monitor.png)
 
 
 ## Team
 
-### University of Oxford - Artificial Intelligence: Cloud and Edge Implementations - Team 3
+#### University of Oxford - Artificial Intelligence: Cloud and Edge Implementations - Team 3
 
 - Sachin Varghese
 - Prasad Deshpande
