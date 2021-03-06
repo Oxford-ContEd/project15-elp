@@ -10,7 +10,7 @@ This project is a group exercise undertaken as part of the University of Oxford 
 ## Relevant Links
 
 - [Elephant Listening Project](https://elephantlisteningproject.org/)
-- [Project 15](https://microsoft.github.io/project15/)
+- [Microsoft Project 15](https://microsoft.github.io/project15/)
 
 ## Quick Start
 

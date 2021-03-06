@@ -82,7 +82,7 @@ Further, many more model architectures can be tested and compared to understand 
 ## Relevant Links
 
 - [Elephant Listening Project](https://elephantlisteningproject.org/)
-- [Project 15](https://microsoft.github.io/project15/)
+- [Microsoft Project 15](https://microsoft.github.io/project15/)
 - [Update Presentation Slides](./Project_15_ELP_Slides.pptx)
 
 ### Research Links
