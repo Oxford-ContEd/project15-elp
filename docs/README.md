@@ -2,9 +2,11 @@
 
 This project is a group exercise undertaken as part of the University of Oxford - Artificial Intelligence: Cloud and Edge Implementations course, as a learning challenge from Microsoft and Elephant Listening Project. The objective is to devise solutions against illegal elephant hunting in tropical African forests by enabling sensors for instant prediction of gunshot events and thus mitigate poaching attempts.
 
-## Challenge
+## Challenge - Gunshot detection
 
-The current model is very inefficient - less than .2% of tagged signals are gunshots and we typically get 10K- 15K tagged signals in a four-month deployment at just one of the 50 recording sites. The issue is we have about 200 good gunshots annotated, but because poaching is way too high, gunshots are still extremely rare in the sounds and it is extremely time-consuming to create the "truth" logs where we can say that every gunshot in a 24hr file has been tagged. From our understanding, this makes developing a detector more difficult.
+As proposed by Dr. Peter Wrege, Director Elephant Listening Project, Center for Conservation Bioacoustics, Cornell Lab of Ornithology, gunshot detection is an issue in African National Parks and environmental audio data is being collected into a public database at [Congo Soundscapes](https://elephantlisteningproject.org/congo-soundscapes-public-database/) as part of the Elephant Listening Project.
+
+The current model (for gunshot detection) is very inefficient - less than .2% of tagged signals are gunshots and we typically get 10K- 15K tagged signals in a four-month deployment at just one of the 50 recording sites. The issue is we have about 200 good gunshots annotated, but because poaching is way too high, gunshots are still extremely rare in the sounds and it is extremely time-consuming to create the "truth" logs where we can say that every gunshot in a 24hr file has been tagged. From our understanding, this makes developing a detector more difficult.
 
 ## Data Collection, Analysis, and Feature extraction
 
@@ -25,40 +27,40 @@ Now we have to convert the gunshot detection issue into a machine learning probl
 
 Two model architectures tested by running scripts from the [Makefle](../Code/Model_Training/Makefile) and the following results were observed,
 
-| Neural Network Architecture                | Train Accuracy | Test Accuracy |
+| Neural Network Architecture  | Train Accuracy | Test Accuracy |
 | ---------------------------- | -------------- | ------------- |
-| Multi-layer Perceptron       | 0.9750         | 0.9205        |
+| Multi-layer Perceptron       | 0.9740         | 0.9205        |
 | Convolutional Neural Network | 0.9756         | 0.9436        |
 
-Note: Obviously these metrics depend directly on the data trained on and further improvements in data, features, and model architecture is needed for this to be of any practical application.
+_Note_: These accuracy metrics depend directly on the limited data used for model training and testing. Further improvements in contextual data collection, feature extraction and analysis, and experimentation with model architectures is needed to validate the reliability of these model metrics for practical applications. 
 
 ## Deployment
 
-The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a [notebook](../Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup.
+The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](../Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
 
-### Project 15 Setup
+### Microsoft Project 15 Setup
 
 - Deploy the Project 15 platform as per instructions here https://microsoft.github.io/project15/Deploy/Deployment.html
 
 - Add a device called `gunshot-detector-1` as per the instructions here https://microsoft.github.io/project15/Deploy/ConnectingDevice.html
 
 
-### Threat Simulation and Client
+### Edge Device Simulation
 
-* We have created a NodeJs based client that sends predictions to IoT Hub using tensorflow as backend. [Link to client](../Code/Deployment/Client)
+* We have created an edge device prototype that simulates predictions from audio data and sends telemetry data to IoT Hub. This is a NodeJs based application that uses tensorflow as backend to make predictions using the model created during training phase. 
 
-* Convert the models to tfjs graph format for the client to predict
+* The model created during the training phase needs conversion to a tensroflow js graph model format to be used in a node js application. So we convert the models to tfjs graph format for the client to predict using the make command as follows
 ```sh
 make convert_model
 ```
 
-* Copy IoT device connection string to `.env` file in the [client folder](../Code/Deployment/Client) as follows
+* Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](../Code/Deployment/Client) as follows
 ```
 CONN_STR=<conn-string>
 DETECTOR_ID=gunshot-detector-1
 ```
 
-* Run the client simulation to send telemetry data to IoT Hub
+* Run the client to simulate gunshot predictions randomly and send telemetry data to IoT Hub
 ```sh
 make run_client_simulation
 ```
