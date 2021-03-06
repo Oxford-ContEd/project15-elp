@@ -5,8 +5,7 @@
 
 This project is a group exercise undertaken as part of the University of Oxford - Artificial Intelligence: Cloud and Edge Implementations course as a learning challenge from Microsoft and Elephant Listening Project. The objective is to devise solutions for gunshot detection in tropical African forests and to create instant alerts to curtail poaching attempts. 
 
-### Advanced documentation and demo video can be found [here](
-[Website Link](https://oxford-conted.github.io/project15-elp/))
+### Advanced documentation and demo video can be found on the [website](https://oxford-conted.github.io/project15-elp/)
 
 ## Relevant Links
 
