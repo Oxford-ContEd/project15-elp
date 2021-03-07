@@ -35,7 +35,7 @@ There could be more features relevant to this classification problem that can be
 
 The input to the machine learning model will be a set of audio features and the model has to classify each input set into two classes, i.e gunshot or environmental audio. This is a binary classification problem and a suitable [Dataset](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Dataset) was created for training purposes. A [feature extraction script](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/feature_extraction.py) was created to convert the raw audio `.wav` files into relevant feature data and corresponding true values for classification.
 
-[Azure Machine Learning](https://azure.microsoft.com/en-in/services/machine-learning/) cloud service has been leveraged for the classification model supervised training. In this case, two different model architectures were tested by running scripts from the [Makefle](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/Makefile) and the following results were observed,
+[Azure Machine Learning](https://azure.microsoft.com/en-in/services/machine-learning/) cloud service has been leveraged for the classification model supervised training. In this case, two different model architectures were tested by running scripts from the [Makefile](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/Makefile) and the following results were observed,
 
 | Neural Network Architecture  | Train Accuracy | Test Accuracy |
 | ---------------------------- | -------------- | ------------- |
