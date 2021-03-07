@@ -10,7 +10,7 @@ The current model (for gunshot detection) is very inefficient - less than .2% of
 
 ## Data Collection, Analysis, and Feature extraction
 
-So the main issue in this domain is the lack of tagged data and also the gunshot audio for such use cases is proprietary. So we collected random gunshot samples and other environmental audio samples from internet sources. A few samples of them are available in the [Sample audio](../Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](../Code/Analysis) folder. For brevity, only a part of the dataset is uploaded in the repo but all examples, notebooks, and the dataset are structured in a way to accommodate more data and scale the model training process as we move ahead.
+So the main issue in this domain is the lack of tagged data and also the gunshot audio for such use cases is proprietary. So we collected random gunshot samples and other environmental audio samples from internet sources. A few samples of them are available in the [Sample audio](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Analysis) folder. For brevity, only a part of the dataset is uploaded in the repo but all examples, notebooks, and the dataset are structured in a way to accommodate more data and scale the model training process as we move ahead.
 
 Many features were analyzed across two different classes namely gunshot and environmental audio. The environmental audio contains audio data of elephant noises and other sounds of the tropical African forests. The features analyzed are as follows,
 
@@ -23,9 +23,9 @@ There could be more features relevant to this classification problem that can be
 
 ## Model Training
 
-Now we have to convert the gunshot detection issue into a machine learning problem. The input to the ML model will be a set of audio features and the ML model has to classify it into two classes, i.e gunshot or environmental audio. Since this is a binary classification problem a suitable [Dataset](../Code/Dataset) was created for training purposes. A [feature extraction script](../Code/Model_Training/feature_extraction.py) was created to convert the raw audio into relevant feature data and corresponding true values for classification.
+Now we have to convert the gunshot detection issue into a machine learning problem. The input to the ML model will be a set of audio features and the ML model has to classify it into two classes, i.e gunshot or environmental audio. Since this is a binary classification problem a suitable [Dataset](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Dataset) was created for training purposes. A [feature extraction script](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/feature_extraction.py) was created to convert the raw audio into relevant feature data and corresponding true values for classification.
 
-Two model architectures tested by running scripts from the [Makefle](../Code/Model_Training/Makefile) and the following results were observed,
+Two model architectures tested by running scripts from the [Makefle](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/Makefile) and the following results were observed,
 
 | Neural Network Architecture  | Train Accuracy | Test Accuracy |
 | ---------------------------- | -------------- | ------------- |
@@ -36,7 +36,7 @@ _Note_: These accuracy metrics depend directly on the limited data used for mode
 
 ## Deployment
 
-The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](../Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
+The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
 
 ### Microsoft Project 15 Setup
 
@@ -54,7 +54,7 @@ The models can be deployed using [NVIDIA Triton Inference Server](https://develo
 make convert_model
 ```
 
-- Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](../Code/Deployment/Client) as follows
+- Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/Client) as follows
 
 ```
 CONN_STR=<conn-string>
