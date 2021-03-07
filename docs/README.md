@@ -1,16 +1,16 @@
 ## Introduction
 
-This project is a group exercise undertaken as part of the University of Oxford - Artificial Intelligence: Cloud and Edge Implementations course, as a learning challenge from Microsoft and Elephant Listening Project. The objective is to devise solutions against illegal elephant hunting in tropical African forests by enabling sensors for instant prediction of gunshot events and thus mitigate poaching attempts.
+This project is a group exercise undertaken as part of the [University of Oxford - Artificial Intelligence: Cloud and Edge Implementations course](https://www.conted.ox.ac.uk/courses/artificial-intelligence-cloud-and-edge-implementations), as a learning challenge from Microsoft and Elephant Listening Project. The objective is to devise solutions against illegal elephant hunting in tropical African forests by enabling sensors for instant prediction of gunshot events and thus mitigate poaching attempts.
 
 ## Elephant Listening Project Challenge
 
-As proposed by Dr. Peter Wrege, Director Elephant Listening Project, Center for Conservation Bioacoustics, Cornell Lab of Ornithology, gunshot detection is an issue in African National Parks and environmental audio data is being collected into a public database at [Congo Soundscapes](https://elephantlisteningproject.org/congo-soundscapes-public-database/) as part of the Elephant Listening Project.
+As proposed by Dr. Peter Wrege, Director [Elephant Listening Project](https://elephantlisteningproject.org/), Center for Conservation Bioacoustics, Cornell Lab of Ornithology, gunshot detection is an issue in African National Parks and environmental audio data is being collected into a public database at [Congo Soundscapes](https://elephantlisteningproject.org/congo-soundscapes-public-database/) as part of the Elephant Listening Project.
 
 > The current model (for gunshot detection) is very inefficient - less than .2% of tagged signals are gunshots and we typically get 10K- 15K tagged signals in a four-month deployment at just one of the 50 recording sites. The issue is we have about 200 good gunshots annotated, but because poaching is way too high, gunshots are still extremely rare in the sounds and it is extremely time-consuming to create the "truth" logs where we can say that every gunshot in a 24hr file has been tagged. From our understanding, this makes developing a detector more difficult.
 
 ## IoT Architecture - Microsoft Project 15 Open Platform
 
-The base Project 15 Architecture is leveraged to follow the best practices in the deployment of scalable IoT solutions. One of the core goals of the Project 15 Open Platform is to boost innovation with a ready-made platform, allowing the scientific developer to expand into specific use cases.
+The [Microsoft Project 15](https://microsoft.github.io/project15/) Architecture is leveraged to follow the best practices in the deployment of scalable IoT solutions. One of the core goals of the Project 15 Open Platform is to boost innovation with a ready-made platform, allowing the scientific developer to expand into specific use cases.
 
 ![Project 15 Architecture](https://microsoft.github.io/project15/Developer-Guide/media/Architecture-Overview.png)
 
