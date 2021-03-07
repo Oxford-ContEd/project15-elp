@@ -8,6 +8,27 @@ As proposed by Dr. Peter Wrege, Director Elephant Listening Project, Center for 
 
 > The current model (for gunshot detection) is very inefficient - less than .2% of tagged signals are gunshots and we typically get 10K- 15K tagged signals in a four-month deployment at just one of the 50 recording sites. The issue is we have about 200 good gunshots annotated, but because poaching is way too high, gunshots are still extremely rare in the sounds and it is extremely time-consuming to create the "truth" logs where we can say that every gunshot in a 24hr file has been tagged. From our understanding, this makes developing a detector more difficult.
 
+## IoT Architecture - Project 15 Open Platform
+
+The base Project 15 Architecture is leveraged to follow the best practices in the deployment of scalable IoT solutions. One of the core goals of the Project 15 Open Platform is to boost innovation with a ready-made platform, allowing the scientific developer to expand into specific use cases.
+
+![Project 15 Architecture](https://microsoft.github.io/project15/Developer-Guide/media/Architecture-Overview.png)
+
+Thus, the scalable nature of this architecture can be utilized to add further components for streaming and batch processing later as needed. Data Scientists can train the model using Azure Machine Learning cloud service and deploy the model to edge devices using IoT services. This process can be automated using Azure cloud services for upgrading the edge devices models at runtime through a strategic rollout. 
+
+### Event processing for Gunshot detection 
+- Edge devices continuously reads audio data, extracts features and makes ML inference to classify events as gunshot or not.
+
+- Edge devices then, sends this telemetry data to Event Hub through the IoT gateway 
+
+- If an alert is required to be sent then it will be sent to Azure Notifications Hub 
+
+- We could also write the event to a structured database for persistance and audit purposes later.
+
+- Azure apps or Power BI Monitoring dashboard reads and displays live telemetry data from multiple sensors.
+
+- Rangers can monitor the notifications and live dashboard for threats.
+
 ## Data Collection, Analysis, and Feature extraction
 
 The main issue as per the challenge is the lack of tagged data and also mostly the gunshot audio data for such use cases is proprietary. So we collected random gunshot samples and other environmental audio samples from internet sources. A few samples of them are available in the [Sample audio](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Analysis) folder. For brevity, only a part of the dataset is uploaded in the repo but all examples, notebooks, and the dataset are structured in a way to accommodate more data and scale the model training process as we move ahead.
@@ -34,28 +55,9 @@ At this stage, we convert the gunshot detection problem statement into a machine
 
 _Note_: These accuracy metrics depend directly on the limited data used for model training and testing. Further improvements in contextual data collection, feature extraction and analysis, and experimentation with model architectures is needed to validate the reliability of these model metrics for practical applications.
 
-## Deployment
+## IoT Solution Deployment
 
 The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
-
-### IoT Solution Architecture - Project 15
-
-The base Project 15 Architecture is leveraged to follow the best practices in the deployment of scalable IoT solutions. Furthermore, the scalable nature of this architecture can be utilized to add components like Databricks Delta, Databricks streaming and batch processing.
-
-![Project 15 Architecture](https://microsoft.github.io/project15/Developer-Guide/media/Architecture-Overview.png)
-
-### Event Processing 
-- Edge device continuously reads audio data, extracts features and makes ML inference to classify events as gunshot or not.
-
-- Edge device then sends this telemetry data to Event Hub through the IoT gateway 
-
-- If an alert is required to be sent then it will be sent to Azure Notifications Hub 
-
-- We could also write the event to a structured database for persistance and audit purposes later.
-
-- Azure apps or Power BI Monitoring dashboard reads and displays live telemetry data from multiple sensors.
-
-- Rangers can monitor the notifications and live dashboard for threats.
 
 ### Microsoft Project 15 Setup
 
