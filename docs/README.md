@@ -65,6 +65,8 @@ The models can be deployed using [NVIDIA Triton Inference Server](https://develo
 
 - Deploy the Project 15 platform as per instructions [here](https://microsoft.github.io/project15/Deploy/Deployment.html). The scalable nature of this architecture can be utilized to add further components for streaming and batch processing later as needed.
 
+![architecture](https://user-images.githubusercontent.com/24502613/110241418-a372a480-7f76-11eb-8bd5-8e26f3563120.png)
+
 - Add a device called `gunshot-detector-1` as per the instructions [here](https://microsoft.github.io/project15/Deploy/ConnectingDevice.html)
 
 ### Edge Device Simulation
