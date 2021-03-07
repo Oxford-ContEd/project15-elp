@@ -29,11 +29,11 @@ The base Project 15 Architecture is leveraged to follow the best practices in th
 
 - Rangers can monitor the notifications and live dashboard for threats.
 
-## Gunshot Detection Machine Learning Model Training
+## Machine Learning Model Training
 
 ### Data Collection, Analysis, and Feature extraction
 
-The main issue as per the challenge is the lack of tagged data for model training and also mostly the gunshot audio data for such use cases is proprietary. So we collected free gunshot samples and other environmental audio samples from random internet sources. A few samples of them are available in the [Sample audio](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Analysis) folder. For brevity, only a part of the dataset is uploaded in the repo but all examples, notebooks, and the dataset are structured in a way to accommodate more data and scale the model training process as we move ahead.
+At this stage, we convert the gunshot detection problem statement into a machine learning problem. The main issue as per the challenge is the lack of tagged data for model training and also mostly the gunshot audio data for such use cases is proprietary. So we collected free gunshot samples and other environmental audio samples from random internet sources. A few samples of them are available in the [Sample audio](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Sample_Audio_Data) folder. There was some basic audio cleaning done to remove noise and clip exact audio data points post converting all formats to `.wav` files into the dataset. The further audio analysis was carried out as per [Analysis Notebooks](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Analysis) folder. For brevity, only a part of the dataset is uploaded in the repo but all examples, notebooks, and the dataset are structured in a way to accommodate more data and scale the model training process as we move ahead.
 
 Many features were analyzed across two different classes namely gunshot and environmental audio. The environmental audio contains audio data of elephant noises and other sounds of the tropical African forests. The features analyzed are as follows,
 
@@ -46,7 +46,7 @@ There could be more features relevant to this classification problem that can be
 
 ### Classification Model Architecture
 
-At this stage, we convert the gunshot detection problem statement into a machine learning problem. The input to the machine learning model will be a set of audio features and the model has to classify each input set into two classes, i.e gunshot or environmental audio. This is a binary classification problem and a suitable [Dataset](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Dataset) was created for training purposes. A [feature extraction script](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/feature_extraction.py) was created to convert the raw audio `.wav` files into relevant feature data and corresponding true values for classification.
+The input to the machine learning model will be a set of audio features and the model has to classify each input set into two classes, i.e gunshot or environmental audio. This is a binary classification problem and a suitable [Dataset](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Dataset) was created for training purposes. A [feature extraction script](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/feature_extraction.py) was created to convert the raw audio `.wav` files into relevant feature data and corresponding true values for classification.
 
 [Azure Machine Learning](https://azure.microsoft.com/en-in/services/machine-learning/) cloud service has been leveraged for the classification model supervised training. In this case, two different model architectures were tested by running scripts from the [Makefle](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/Makefile) and the following results were observed,
 
@@ -105,16 +105,13 @@ Gunshot detection is still an unsolved problem today and there is ongoing resear
 
 Further, many more model architectures can be tested and compared to understand what hyper-parameters work best for such remote environments. This can surely improve the model training process. Also, better deployment practices, telemetry, alert systems, and model upgrade processes can be explored with cloud-based IoT solutions to improve the overall efficiency of the solution.
 
-## Relevant Links
+### Relevant Links
 
 - [Elephant Listening Project](https://elephantlisteningproject.org/)
 - [Microsoft Project 15](https://microsoft.github.io/project15/)
 - [Update Presentation Slides](./Project_15_ELP_Slides.pptx)
-
-### Research Links
-
-- https://www.paperswithcode.com/datasets?q=gunshot&v=lst&o=match
-- https://developers.google.com/machine-learning/guides/text-classification/step-4
+- [Sample Datasets](https://www.paperswithcode.com/datasets?q=gunshot&v=lst&o=match)
+- [ML Classification Guide](https://developers.google.com/machine-learning/guides/text-classification/)
 
 ## Team
 
