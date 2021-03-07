@@ -14,20 +14,7 @@ The [Microsoft Project 15](https://microsoft.github.io/project15/) Architecture 
 
 ![Project 15 Architecture](https://microsoft.github.io/project15/Developer-Guide/media/Architecture-Overview.png)
 
- Data Scientists can train the model using Azure Machine Learning cloud service and deploy the model to edge devices using IoT services. This process can be automated using Azure cloud services for upgrading the edge devices models at runtime through a strategic rollout. 
-
-## Event processing for Gunshot detection 
-- Edge devices continuously read audio data, extracts features, and makes ML inference to classify events as gunshot or not.
-
-- Edge devices at multiple locations in the National park then, sends this telemetry data to Event Hub through the IoT gateway 
-
-- If an alert is required to be sent then it will be sent to Azure Notifications Hub 
-
-- We could also write the events to a structured database for long-term persistence and audit purposes later.
-
-- Azure apps or Power BI monitoring dashboard reads and displays live telemetry data from multiple sensors at different locations.
-
-- Rangers can monitor the notifications and live dashboard for threats.
+Data Scientists can train the model using Azure Machine Learning cloud service and deploy the model to edge devices using IoT services. This process can be automated using Azure cloud services for upgrading the edge devices models at runtime through a strategic rollout.
 
 ## Machine Learning Model Training
 
@@ -59,7 +46,19 @@ _Note_: These accuracy metrics depend directly on the limited data used for mode
 
 ## IoT Solution Deployment
 
-The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
+### Event processing for Gunshot detection
+
+- Edge devices continuously read audio data, extracts features, and makes ML inference to classify events as gunshot or not.
+
+- Edge devices at multiple locations in the National park then, sends this telemetry data to Event Hub through the IoT gateway
+
+- If an alert is required to be sent then it will be sent to Azure Notifications Hub
+
+- We could also write the events to a structured database for long-term persistence and audit purposes later.
+
+- Azure apps or Power BI monitoring dashboard reads and displays live telemetry data from multiple sensors at different locations.
+
+- Rangers can monitor the notifications and live dashboard for threats.
 
 ### Microsoft Project 15 Setup
 
@@ -71,22 +70,24 @@ The models can be deployed using [NVIDIA Triton Inference Server](https://develo
 
 ### Edge Device Simulation
 
-- We have created an edge device prototype that simulates predictions from audio data and sends telemetry data to IoT Hub. This is a `nodejs` based application that uses `tensorflow` as backend to make predictions using the model created during training phase.
+The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
 
-- The model created during the training phase needs conversion to a tensroflow js graph model format to be used in a node js application. So we convert the models to `tfjs` graph format for the client to predict using the make command as follows
+For demo purposes, we have created an edge device prototype that simulates predictions from audio data and sends telemetry data to IoT Hub. This is a `nodejs` based application that uses `tensorflow` as backend to make predictions using the model created during training phase.
+
+The model created during the training phase needs conversion to a tensroflow js graph model format to be used in a node js application. So we convert the models to `tfjs` graph format for the client to predict using the make command as follows
 
 ```sh
 make convert_model
 ```
 
-- Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/Client) as follows
+Register an edge device named `gunshot-detector-1` to IoT Hub and copy IoT device connection string from the micorsoft portal into `.env` file in the [edge device source folder](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/Client) as follows
 
 ```
 CONN_STR=<conn-string>
 DETECTOR_ID=gunshot-detector-1
 ```
 
-- Run the edge device to simulate gunshot predictions randomly and send telemetry data to IoT Hub
+Now, run the edge device prototype to simulate gunshot predictions randomly and send telemetry data to IoT Hub
 
 ```sh
 make run_device_simulation
