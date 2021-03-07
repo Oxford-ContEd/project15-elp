@@ -95,7 +95,7 @@ make run_device_simulation
 
 ### Live Monitoring and Demo
 
-- [Demo Video](https://user-images.githubusercontent.com/24502613/110214101-04dc3a00-7ec9-11eb-901c-99a3de0b2352.mp4)
+- [Demo Video](https://user-images.githubusercontent.com/24502613/110242032-0f0a4100-7f7a-11eb-845c-e5f1f374d05a.mp4)
 
 - Monitor gunshot detection from the Project 15 app
   ![gunshot_telemetry](https://user-images.githubusercontent.com/24502613/110213015-369ed200-7ec4-11eb-9788-9f3ac3b99184.png)
