@@ -25,7 +25,7 @@ There could be more features relevant to this classification problem that can be
 
 At this stage, we convert the gunshot detection problem statement into a machine learning problem. The input to the machine learning model will be a set of audio features and the model has to classify each input set into two classes, i.e gunshot or environmental audio. This is a binary classification problem and a suitable [Dataset](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Dataset) was created for training purposes. A [feature extraction script](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/feature_extraction.py) was created to convert the raw audio `.wav` files into relevant feature data and corresponding true values for classification.
 
-Two model architectures were tested by running scripts from the [Makefle](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/Makefile) and the following results were observed,
+[Azure Machine Learning](https://azure.microsoft.com/en-in/services/machine-learning/) cloud service has been leveraged for the classification model supervised training. In this case, two different model architectures were tested by running scripts from the [Makefle](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Model_Training/Makefile) and the following results were observed,
 
 | Neural Network Architecture  | Train Accuracy | Test Accuracy |
 | ---------------------------- | -------------- | ------------- |
@@ -37,6 +37,25 @@ _Note_: These accuracy metrics depend directly on the limited data used for mode
 ## Deployment
 
 The models can be deployed using [NVIDIA Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server) and a deployment [notebook](https://github.com/Oxford-ContEd/project15-elp/tree/main/Code/Deployment/deploy.ipynb) demonstrates the best approach to a cloud-native inference setup using container technology and inference over network.
+
+### IoT Solution Architecture - Project 15
+
+The base Project 15 Architecture is leveraged to follow the best practices in the deployment of scalable IoT solutions. Furthermore, the scalable nature of this architecture can be utilized to add components like Databricks Delta, Databricks streaming and batch processing.
+
+![Project 15 Architecture](https://microsoft.github.io/project15/Developer-Guide/media/Architecture-Overview.png)
+
+### Event Processing 
+- Edge device continuously reads audio data, extracts features and makes ML inference to classify events as gunshot or not.
+
+- Edge device then sends this telemetry data to Event Hub through the IoT gateway 
+
+- If an alert is required to be sent then it will be sent to Azure Notifications Hub 
+
+- We could also write the event to a structured database for persistance and audit purposes later.
+
+- Azure apps or Power BI Monitoring dashboard reads and displays live telemetry data from multiple sensors.
+
+- Rangers can monitor the notifications and live dashboard for threats.
 
 ### Microsoft Project 15 Setup
 
